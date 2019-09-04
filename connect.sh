@@ -10,7 +10,7 @@ check_requirement openconnect
 echo "allow-hotplug eth0  
 iface eth0 inet static  
     address 192.168.2.1
-    netmask 255.2555.0
+    netmask 255.255.255.0
     network 192.168.2.0
     broadcast 192.168.2.255" > /etc/network/interfaces.d/eth0
 
