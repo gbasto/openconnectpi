@@ -22,6 +22,25 @@ domain-needed
 bogus-priv
 dhcp-range=192.168.2.2,192.168.2.100,12h" > /etc/dnsmasq.conf
 
+echo "# Name Service Switch configuration file.
+# See nsswitch.conf(5) for details.
+
+passwd: files mymachines systemd
+group: files mymachines systemd
+shadow: files
+
+publickey: files
+
+hosts: files dns mymachines myhostname
+networks: files
+
+protocols: files
+services: files
+ethers: files
+rpc: files
+
+netgroup: files" > /etc/nsswitch.conf
+
 sed -i 's/#net.ipv4.ip_forward/net.ipv4.ip_forward/' /etc/sysctl.conf
 iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE
 
