@@ -42,6 +42,7 @@ rpc: files
 netgroup: files" > /etc/nsswitch.conf
 
 sed -i 's/#net.ipv4.ip_forward/net.ipv4.ip_forward/' /etc/sysctl.conf
+/etc/init.d/procps restart
 iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE
 
 echo "Server: "
